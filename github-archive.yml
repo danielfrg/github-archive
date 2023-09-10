@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "0 0 11 1/1 *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: github-archive
+              image: ghcr.io/danielfrg/github-archive:main
+              imagePullPolicy: Always
+              env:
+                # Change to your token
+                - name: GH_TOKEN
+                  value: "ghp_1234567890"
+                - name: TARGET_DIR
+                  value: "path/under/root/dir"
+              volumeMounts:
+                - mountPath: /data
+                  name: content
+          volumes:
+            # Change to valid volumne mount
+            - name: cache-volume
+              emptyDir:
+                sizeLimit: 500Mi
