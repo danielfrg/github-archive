@@ -4,7 +4,8 @@
 OWNER=${OWNER:-"danielfrg"}
 LIMIT=${REPO_LIMIT:-200}
 TAR_REPOS=${TAR_REPOS:-1}
-TARGET_DIR=${TARGET_DIR:-"data"}
+ROOT_DIR=${ROOT_DIR:-"data"}
+TARGET_DIR=${TARGET_DIR:-""}
 
 # Internal
 file="repos.txt"
@@ -13,17 +14,17 @@ file="repos.txt"
 gh repo list --limit $LIMIT --json name $OWNER | jq -r '.[]."name"' > $file
 
 # Clone and Tar
-mkdir -p $TARGET_DIR
+mkdir -p $ROOT_DIR/$TARGET_DIR/$OWNER
 while read repo; do
-    echo "Cloning $repo"
-    rm -rf $TARGET_DIR/$repo
-    gh repo clone $OWNER/$repo $TARGET_DIR/$repo -- --quiet
+    echo "Cloning $repo to $ROOT_DIR/$TARGET_DIR/$OWNER/$repo"
+    rm -rf $ROOT_DIR/$TARGET_DIR/$OWNER/$repo
+    gh repo clone $OWNER/$repo $ROOT_DIR/$TARGET_DIR/$OWNER/$repo -- --quiet
 
     if [ $TAR_REPOS -eq 1 ]; then
         echo "Taring $repo"
-        cd $TARGET_DIR
+        cd $ROOT_DIR/$TARGET_DIR/$OWNER
         tar -czf $repo.tar.gz $repo
         rm -rf $repo
-        cd ..
+        cd -
     fi
 done < "$file"

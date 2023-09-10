@@ -9,14 +9,18 @@ GitHub organization.
 
 ## Usage
 
+Local:
+
 ```console
 # Local
 ./script/backup.sh
+```
 
-# Docker
+Docker
+
+```console
 export GH_TOKEN=...
-task docker:build
-task docker:run
+docker run -it --rm -e GH_TOKEN=$GH_TOKEN -v $PWD/data:/data ghcr.io/danielfrg/github-archive:main
 ```
 
 See the `scripts/backup.sh` and `Dockerfile` script for configuration options.

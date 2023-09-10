@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script used by docker
 
-export TARGET_DIR=/data
+export ROOT_DIR=/data
 
 echo "Authenticating with token"
 echo $GH_TOKEN |  gh auth login --with-token

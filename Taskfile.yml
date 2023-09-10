@@ -10,8 +10,8 @@ tasks:
 
   docker:build:
     cmds:
-      - docker build -t danielfrg/github-archive .
+      - docker build -t ghcr.io/danielfrg/github-archive .
 
   docker:run:
     cmds:
-      - docker run -it --rm -e GH_TOKEN=$GH_TOKEN -v $PWD/data:/data danielfrg/github-archive
+      - docker run -it --rm -e GH_TOKEN=$GH_TOKEN -v $PWD/data:/data ghcr.io/danielfrg/github-archive

@@ -17,6 +17,8 @@ RUN chmod +x /usr/local/bin/backup.sh
 
 # Variables
 ENV GH_TOKEN=
+ENV ROOT_DIR=/data
+ENV TARGET_DIR=backups/github
 ENV TAR_REPOS=1
 
 CMD ["/usr/local/bin/cmd.sh"]
