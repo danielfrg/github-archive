@@ -2,6 +2,10 @@ on:
   push:
     branches: [main]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 concurrency:
   group: deploy-${{ github.head_ref }}
   cancel-in-progress: true
