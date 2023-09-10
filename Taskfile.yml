@@ -1,6 +1,17 @@
 version: 3
 
+env:
+  GH_TOKEN:
+
 tasks:
   backup:
     cmds:
       - ./backup.sh
+
+  docker:build:
+    cmds:
+      - docker build -t danielfrg/github-archive .
+
+  docker:run:
+    cmds:
+      - docker run -it --rm -e GH_TOKEN=$GH_TOKEN -v $PWD/data:/data danielfrg/github-archive
