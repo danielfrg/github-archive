@@ -15,8 +15,8 @@ declare -A kinds
 kinds=( ["source"]="sources.txt" ["archive"]="archived.txt")
 
 # Get list of repos
-gh repo list --limit $LIMIT --json name $OWNER --archived | jq -r '.[]."name"' > $file_sources
-gh repo list --limit $LIMIT --json name $OWNER --no-archived | jq -r '.[]."name"' > $file_archived
+gh repo list --limit $LIMIT --json name $OWNER --archived | jq -r '.[]."name"' > $file_archived
+gh repo list --limit $LIMIT --json name $OWNER --no-archived | jq -r '.[]."name"' > $file_sources
 
 rm -rf $ROOT_DIR/$TARGET_DIR
 
