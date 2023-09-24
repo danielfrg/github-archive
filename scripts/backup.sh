@@ -1,6 +1,7 @@
 #!/bin/bash
+set -euxo pipefail
 
-# Options
+# Variables
 OWNER=${OWNER:-"danielfrg"}
 LIMIT=${REPO_LIMIT:-200}
 TAR_REPOS=${TAR_REPOS:-1}

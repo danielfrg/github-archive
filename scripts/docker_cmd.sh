@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script used by docker
+set -euxo pipefail
 
 export ROOT_DIR=/data
 
