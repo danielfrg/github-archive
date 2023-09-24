@@ -1,11 +1,11 @@
 # github-archive
 
-Simple bash scro[t] with just `gh` ahd `jq` as dependencies to create an archive
+Simple bash script with just `gh` ahd `jq` as dependencies to create an archive
 of all repositories in a GitHub organization.
 
-- I use this to run a weekly backup on my homelab to a NAS
-- Docker image + [kubernetes cronjob template](k8s/cronjob.yml)
-  - Docker image wses a Github Token to authenticate
+- I use this to run a daily backup on my homelab
+- Includes Docker image + [kubernetes cronjob template](k8s/cronjob.yml)
+  - Docker image uses a Github Token to authenticate
 
 ## Usage
 
