@@ -27,7 +27,6 @@ for kind in "${!kinds[@]}"; do
     while read repo; do
         target_dir=$ROOT_DIR/$TARGET_DIR/$OWNER/$kind/$repo
         echo "Cloning $repo to $target_dir"
-        rm -rf $target_dir
         gh repo clone $OWNER/$repo $target_dir -- --quiet
 
         if [ $TAR_REPOS -eq 1 ]; then
