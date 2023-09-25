@@ -1,3 +1,5 @@
+name: image
+
 on:
   push:
     branches: [main]
