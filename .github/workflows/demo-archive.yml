@@ -1,9 +1,7 @@
 name: github-archive
 
-# Disabled on this repo
-# on:
-#   push:
-#   workflow_dispatch:
+ on:
+   workflow_dispatch:
 
 # These are optional, for example if running on a self-hosted runner
 # env:
