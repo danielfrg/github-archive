@@ -1,4 +1,4 @@
-name: github-archive
+name: demo-archive
 
  on:
    workflow_dispatch:
