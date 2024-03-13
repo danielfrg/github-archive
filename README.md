@@ -8,7 +8,7 @@ Depends on: `gh` and `jq`.
 - [docker image](https://github.com/danielfrg/github-archive/pkgs/container/github-archive)
   - Auth using a Github Personal Access Token (PAT)
 - [kubernetes cronjob template](k8s/cronjob.yml)
-- [Github Action template](./github/workflows/demo-archive.yml)
+- [Github Action template](./.github/workflows/demo-archive.yml)
 
 See the `backup.sh` and `Dockerfile` files for variables.
 
