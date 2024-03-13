@@ -1,7 +1,7 @@
 name: demo-archive
 
- on:
-   workflow_dispatch:
+on:
+  workflow_dispatch:
 
 # These are optional, for example if running on a self-hosted runner
 # env:
