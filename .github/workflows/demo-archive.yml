@@ -1,0 +1,45 @@
+name: github-archive
+
+# Disabled on this repo
+# on:
+#   push:
+#   workflow_dispatch:
+
+# These are optional, for example if running on a self-hosted runner
+# env:
+#   ROOT_DIR: "/data"
+#   TARGET_DIR: "apps/backups/github-archive"
+
+jobs:
+  build-archive:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        owner: ["danielfrg"]
+
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+        with:
+          repository: danielfrg/github-archive
+
+      - name: install deps
+        run: sudo apt update && sudo apt install -y git gh jq
+
+      - name: gh auth login
+        run: |
+          echo ${{ secrets.GH_TOKEN_ARCHIVE }} | gh auth login --with-token
+          gh auth setup-git
+
+          # fix to clone forks
+          git config --global --add safe.directory '*'
+
+      - name: run backup
+        run: ./scripts/backup.sh
+        env:
+          OWNER: ${{ matrix.owner }}
+          # This is requried to be a custom Personal Token with access to all repos
+          GH_TOKEN: ${{ secrets.GH_TOKEN_ARCHIVE }}
+

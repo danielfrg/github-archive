@@ -10,8 +10,8 @@ RUN apt update && apt install gh git jq -y
 
 # Add source
 RUN mkdir -p /data
-ADD scripts/backup.sh /usr/local/bin/backup.sh
-ADD scripts/docker_cmd.sh /usr/local/bin/cmd.sh
+ADD backup.sh /usr/local/bin/backup.sh
+ADD docker/cmd.sh /usr/local/bin/cmd.sh
 RUN chmod +x /usr/local/bin/backup.sh
 RUN chmod +x /usr/local/bin/cmd.sh
 
