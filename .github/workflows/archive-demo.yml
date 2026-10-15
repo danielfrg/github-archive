@@ -1,4 +1,4 @@
-name: demo-archive
+name: Archive Demo
 
 on:
   workflow_dispatch:
